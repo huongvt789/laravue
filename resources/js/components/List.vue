@@ -1,48 +1,29 @@
-<template id="list">
-    <div class="row">
-        <div class="pull-right">
-            <route-link class="btn btn-xs btn-primary">
-                Add new @{{ message }}
-            </route-link>
-        </div>
-        <div class="table table-bordered">
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-            </tr>
-            <tr v-for="{post, index} in filterPost">
-                <td>{{ index + 1 }}</td>
-                <td>{{ post.name }}</td>
-            </tr>
-        </div>
+<template>
+    <div class="my-component">
+        <h2 style="color: blue;">@{{ message }}</h2>
+        <p class="alert alert-danger" v-bind:class="{hidden: hasError}">Please enter value</p>
+        <form @submit="createItem">
+            <div class="content">
+                <div class="form-group">
+                    <h3 for="name">Name:</h3>
+                    <input type="text" class="form-control" id="name" name="name" required v-model="newItem.name" placeholder=" Enter some name">
+                </div>
+                <div class="form-group">
+                    <h3 for="age">Age:</h3>
+                    <input type="number" class="form-control" id="age" name="age" required v-model="newItem.age" placeholder=" Enter your age">
+                </div>
+                <div class="form-group">
+                    <h3 for="profession">Profession:</h3>
+                    <input type="text" class="form-control" id="profession" name="profession" required v-model="newItem.profession" placeholder=" Enter your profession">
+                </div>
+                <button class="btn btn-primary" id="name" name="name" v-on:click="createItem()">
+                    <span class="glyphicon glyphicon-plus"></span> ADD
+                </button>
+            </div>
+        </form>
     </div>
 </template>
 
-<script>
-    export default {
-        name: "list",
-        data: function () {
-            return {
-                post: '',
-                message: 'aaaa',
-            };
-        },
-        created: function () {
-         let url = 'http://localhost:8081/';
-         Axios.get(url).then((responsive) => {
-            this.posts = responsive.data;
-         })
-        },
-        computed: {
-            filterPost: function () {
-                if(this.posts.length) {
-                    return this.posts;
-                }
-            }
-        }
-    }
-</script>
-
 <style scoped>
-
 </style>
+<script src="../form_add.js"></script>
