@@ -11,11 +11,11 @@
     <link href="{{ asset('css/add.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="flex-center position-ref full-height">
-        <div id="app_vue">
-            <my-component></my-component>
-        </div>
+<div class="flex-center position-ref full-height">
+    <div id="app_vue">
+        <my-component></my-component>
     </div>
+</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script type="text/javascript" src="/js/vue.js"></script>

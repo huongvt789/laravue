@@ -14,7 +14,12 @@ class MembersController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        return view('member/add');
+    }
+
+    public function list()
+    {
+        return Member::orderBy('id', 'DESC')->get();
     }
 
     /**
@@ -40,7 +45,7 @@ class MembersController extends Controller
         $data->age = $request->age;
         $data->profession = $request->profession;
         $data->save ();
-        return response()->json('success');
+        return response()->json(['data' => $data, 'message' => 'Success']);
     }
 
     /**

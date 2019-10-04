@@ -14,8 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::post( '/vueitems', 'MainController@storeItem' );
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'MembersController@index')->name('home');
+Route::get('/list', 'MembersController@list');
+Route::post( '/store', 'MembersController@store' );
