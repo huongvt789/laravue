@@ -14,9 +14,9 @@
 <div class="flex-center position-ref full-height">
     <div id="app_vue">
         <my-component></my-component>
+        <modal></modal>
     </div>
 </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script type="text/javascript" src="/js/vue.js"></script>
 </html>

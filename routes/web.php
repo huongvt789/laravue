@@ -20,3 +20,6 @@ Auth::routes();
 Route::get('/home', 'MembersController@index')->name('home');
 Route::get('/list', 'MembersController@list');
 Route::post( '/store', 'MembersController@store' );
+Route::post( '/edit/{id}', 'MembersController@edit' );
+Route::post( '/update', 'MembersController@update' );
+Route::post( '/delete', 'MembersController@delete' );

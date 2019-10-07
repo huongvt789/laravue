@@ -23,16 +23,6 @@ class MembersController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -40,34 +30,15 @@ class MembersController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new Member();
-        $data->name = $request->name;
-        $data->age = $request->age;
-        $data->profession = $request->profession;
+        $data = new Member($request->all());
         $data->save ();
         return response()->json(['data' => $data, 'message' => 'Success']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function edit(Request $request)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return Member::where('id', $request->id)
+            ->first();
     }
 
     /**
@@ -77,9 +48,14 @@ class MembersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $data = $this->edit($request)
+            ->update($request->all());
+        if($data) {
+            return response()->json(['status' => true, 'message' => 'Update success']);
+        }
+        return response()->json(['status' => false, 'message' => 'Update failed']);
     }
 
     /**
@@ -90,6 +66,8 @@ class MembersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //Todu xu ly an hien modal.
+        return Member::where('id', $id)
+            ->delete();
     }
 }
