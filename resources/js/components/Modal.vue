@@ -28,11 +28,7 @@
 
 <script>
     export default {
-         data() {
-             return {
-                 showModal: true
-             }
-         }
+        props: ['showModal']
     }
 </script>
 <style>

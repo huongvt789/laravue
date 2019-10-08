@@ -7,7 +7,8 @@
                     <li v-if='list.length === 0'>There are no tasks yet!</li>
                     <li class="list-group-item" v-for="(task, index) in list">
                         {{ task.name }}
-                       <button class="btn btn-danger btn-xs pull-right"  v-on:click="showModal = true">Delete</button>
+                       <modal v-bind:showModal="dataa"></modal>
+                       <button class="btn btn-danger btn-xs pull-right" v-on:click="show()">Delete</button>
                         <button class="btn btn-primary btn-xs pull-right" type="button" v-on:click="edit(id =  task.id, name=task.name, age=task.age, profession=task.profession)"> Edit </button>
                     </li>
                 </ul>

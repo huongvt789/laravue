@@ -1,3 +1,5 @@
+import modal from "./components/Modal.vue";
+
 export default {
     data() {
         return {
@@ -9,8 +11,8 @@ export default {
             hasError: true,
             seenAdd: false,
             seenEdit: false,
-            modal: false,
             message: 'Working with Vuejs',
+            dataa: '',
             list: [],
             task: {
                 id: '',
@@ -22,11 +24,14 @@ export default {
                 name: '',
                 age: '',
                 profession: '',
-            },
+          },
         }
     },
     created() {
         this.listMember();
+    },
+    components: {
+        'modal': modal
     },
     methods: {
         listMember() {
@@ -91,5 +96,8 @@ export default {
                     }).catch((err) => console.error(err));
             }
         },
+        show() {
+            return this.dataa = true;
+        }
     },
 }

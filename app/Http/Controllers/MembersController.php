@@ -66,7 +66,7 @@ class MembersController extends Controller
      */
     public function destroy($id)
     {
-        //Todu xu ly an hien modal.
+        //TODO: Show modal to delete.
         return Member::where('id', $id)
             ->delete();
     }

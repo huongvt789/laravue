@@ -1867,12 +1867,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data() {
-    return {
-      showModal: true
-    };
-  }
-
+  props: ['showModal']
 });
 
 /***/ }),
@@ -1886,6 +1881,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_Modal_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Modal.vue */ "./resources/js/components/Modal.vue");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data() {
     return {
@@ -1897,8 +1894,8 @@ __webpack_require__.r(__webpack_exports__);
       hasError: true,
       seenAdd: false,
       seenEdit: false,
-      modal: false,
       message: 'Working with Vuejs',
+      dataa: '',
       list: [],
       task: {
         id: '',
@@ -1918,6 +1915,9 @@ __webpack_require__.r(__webpack_exports__);
     this.listMember();
   },
 
+  components: {
+    'modal': _components_Modal_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   methods: {
     listMember() {
       const axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -1988,6 +1988,10 @@ __webpack_require__.r(__webpack_exports__);
           this.listMember();
         }).catch(err => console.error(err));
       }
+    },
+
+    show() {
+      return this.dataa = true;
     }
 
   }
@@ -2735,44 +2739,51 @@ var render = function() {
               : _vm._e(),
             _vm._v(" "),
             _vm._l(_vm.list, function(task, index) {
-              return _c("li", { staticClass: "list-group-item" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(task.name) +
-                    "\n                   "
-                ),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger btn-xs pull-right",
-                    on: {
-                      click: function($event) {
-                        _vm.showModal = true
+              return _c(
+                "li",
+                { staticClass: "list-group-item" },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(task.name) +
+                      "\n                   "
+                  ),
+                  _c("modal", { attrs: { showModal: _vm.dataa } }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger btn-xs pull-right",
+                      on: {
+                        click: function($event) {
+                          return _vm.show()
+                        }
                       }
-                    }
-                  },
-                  [_vm._v("Delete")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary btn-xs pull-right",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        return _vm.edit(
-                          (_vm.id = task.id),
-                          (_vm.name = task.name),
-                          (_vm.age = task.age),
-                          (_vm.profession = task.profession)
-                        )
+                    },
+                    [_vm._v("Delete")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary btn-xs pull-right",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.edit(
+                            (_vm.id = task.id),
+                            (_vm.name = task.name),
+                            (_vm.age = task.age),
+                            (_vm.profession = task.profession)
+                          )
+                        }
                       }
-                    }
-                  },
-                  [_vm._v(" Edit ")]
-                )
-              ])
+                    },
+                    [_vm._v(" Edit ")]
+                  )
+                ],
+                1
+              )
             })
           ],
           2
