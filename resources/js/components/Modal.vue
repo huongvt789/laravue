@@ -5,19 +5,12 @@
                 <div class="modal-container">
                     <div class="modal-header">
                         <slot name="header">
-                            default header
+                            Do you want to delete it. Are you sure?
                         </slot>
                     </div>
-                    <div class="modal-body">
-                        <slot name="body">
-                            default body
-                        </slot>
-                    </div>
-
                     <div class="modal-footer">
                         <slot name="footer">
-                            default footer
-                            <button class="modal-default-button">OK</button>
+                            <button class="modal-default-button" v-on:click="deletee()">OK</button>
                         </slot>
                     </div>
                 </div>
@@ -28,7 +21,17 @@
 
 <script>
     export default {
-        props: ['showModal']
+        props: ['showModal', 'idDelete'],
+        methods: {
+            deletee() {
+                //Call ajax delete here.
+                const axios = require('axios');
+                axios.post('/delete', this.idDelete)
+                    .then((res) => {
+                        this.listMember();
+                    }).catch((err) => console.error(err));
+            }
+        }
     }
 </script>
 <style>
@@ -65,20 +68,8 @@
         color: #42b983;
     }
 
-    .modal-body {
-        margin: 20px 0;
-    }
-
     .modal-default-button {
         float: right;
-    }
-
-    .modal-enter {
-        opacity: 0;
-    }
-
-    .modal-leave-active {
-        opacity: 0;
     }
 
     .modal-enter .modal-container,

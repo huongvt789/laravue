@@ -1859,15 +1859,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['showModal']
+  props: ['showModal', 'idDelete'],
+  methods: {
+    deletee() {
+      //Call ajax delete here.
+      const axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
+      axios.post('/delete', this.idDelete).then(res => {
+        this.listMember();
+      }).catch(err => console.error(err));
+    }
+
+  }
 });
 
 /***/ }),
@@ -2011,7 +2015,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.modal-mask {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    transition: opacity .3s ease;\n}\n.modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container {\n    width: 300px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    transition: all .3s ease;\n    font-family: Helvetica, Arial, sans-serif;\n}\n.modal-header h3 {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body {\n    margin: 20px 0;\n}\n.modal-default-button {\n    float: right;\n}\n.modal-enter {\n    opacity: 0;\n}\n.modal-leave-active {\n    opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n", ""]);
+exports.push([module.i, "\n.modal-mask {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    transition: opacity .3s ease;\n}\n.modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container {\n    width: 300px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    transition: all .3s ease;\n    font-family: Helvetica, Arial, sans-serif;\n}\n.modal-header h3 {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-default-button {\n    float: right;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n", ""]);
 
 // exports
 
@@ -2756,7 +2760,7 @@ var render = function() {
                       staticClass: "btn btn-danger btn-xs pull-right",
                       on: {
                         click: function($event) {
-                          return _vm.show()
+                          return _vm.show((_vm.id = task.id))
                         }
                       }
                     },
@@ -3132,20 +3136,7 @@ var render = function() {
                 [
                   _vm._t("header", [
                     _vm._v(
-                      "\n                        default header\n                    "
-                    )
-                  ])
-                ],
-                2
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "modal-body" },
-                [
-                  _vm._t("body", [
-                    _vm._v(
-                      "\n                        default body\n                    "
+                      "\n                        Do you want to delete it. Are you sure?\n                    "
                     )
                   ])
                 ],
@@ -3157,12 +3148,18 @@ var render = function() {
                 { staticClass: "modal-footer" },
                 [
                   _vm._t("footer", [
-                    _vm._v(
-                      "\n                        default footer\n                        "
-                    ),
-                    _c("button", { staticClass: "modal-default-button" }, [
-                      _vm._v("OK")
-                    ])
+                    _c(
+                      "button",
+                      {
+                        staticClass: "modal-default-button",
+                        on: {
+                          click: function($event) {
+                            return _vm.deletee()
+                          }
+                        }
+                      },
+                      [_vm._v("OK")]
+                    )
                   ])
                 ],
                 2

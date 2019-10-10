@@ -8,7 +8,7 @@
                     <li class="list-group-item" v-for="(task, index) in list">
                         {{ task.name }}
                        <modal v-bind:showModal="dataa"></modal>
-                       <button class="btn btn-danger btn-xs pull-right" v-on:click="show()">Delete</button>
+                       <button class="btn btn-danger btn-xs pull-right" v-on:click="show(id = task.id)">Delete</button>
                         <button class="btn btn-primary btn-xs pull-right" type="button" v-on:click="edit(id =  task.id, name=task.name, age=task.age, profession=task.profession)"> Edit </button>
                     </li>
                 </ul>
