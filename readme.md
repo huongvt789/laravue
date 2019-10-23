@@ -80,6 +80,9 @@ Run following command:
 > Test vue is running.
 
 cd laradock
+
 docker-compose exec workspace bash
+
 npm run watch
+
 -> Go to brower and reload your page -> Get result.
