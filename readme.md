@@ -8,9 +8,9 @@ Mysql: 5.7
 
 Laradock
 
-Create folder revest: mkdir revest
+Create folder vue: mkdir vue
 
-Cd to revest: cd revest
+Cd to vue: cd vue
 
 Clone: project: git clone https://github.com/huongvt789/laravue.git vue-src
 
@@ -77,3 +77,8 @@ Run following command:
     "composer install"
     "composer dumpautoload" 
     "php artisan migrate --seed"
+> Test vue is running.
+cd laradock
+docker-compose exec workspace bash
+npm run watch
+-> Go to brower and reload your page -> Get result.
