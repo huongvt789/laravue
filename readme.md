@@ -1,10 +1,10 @@
-> Environment
+=== Environment
 
 Nginx: 1.12
 PHP: 7.1
 Mysql: 5.7
 
-> Setup Environment development using Laradock
+=== Setup Environment development using Laradock
 
 Laradock
 
