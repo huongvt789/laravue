@@ -78,6 +78,7 @@ Run following command:
     "composer dumpautoload" 
     "php artisan migrate --seed"
 > Test vue is running.
+
 cd laradock
 docker-compose exec workspace bash
 npm run watch
